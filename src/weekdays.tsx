@@ -5,17 +5,19 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
-'use strict';
+import { Text, View } from "react-native";
+import Utils from "./utils";
 
-const React = require('react');
-const { Text, View } = require('react-native');
-
-const Utils = require('./utils');
-
-function Weekdays(props) {
+function Weekdays(props: {
+  styles: any;
+  startFromMonday: any;
+  weekdays: any;
+  textStyle: any;
+}) {
   const { styles, startFromMonday, weekdays, textStyle } = props;
   let wd = weekdays;
   if (!wd) {
+    //@ts-ignore
     wd = startFromMonday ? Utils.WEEKDAYS_MON : Utils.WEEKDAYS; // English Week days Array
   }
 
@@ -32,6 +34,4 @@ function Weekdays(props) {
   );
 }
 
-Weekdays.propTypes = {};
-
-module.exports = Weekdays;
+export default Weekdays;

@@ -5,22 +5,18 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
-'use strict';
+import PropTypes from "prop-types";
+import jMoment from "moment-jalaali";
+import uuid from "uuid/v4";
+import { View } from "react-native";
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const jMoment = require('moment-jalaali');
-const uuid = require('uuid/v4');
-const { Text, View, ViewPropTypes } = require('react-native');
-
-const Day = require('./Day');
-const EmptyDay = require('./EmptyDay');
-const Utils = require('./utils');
+import Day, { DayProps } from "./Day";
+import EmptyDay from "./EmptyDay";
+import Utils from "./utils";
 
 //Fallback when RN version is < 0.44
-const viewPropTypes = ViewPropTypes || View.propTypes;
 
-export default function DaysGridView(props) {
+export default function DaysGridView(props: Omit<DayProps, "day">) {
   const {
     month,
     year,
@@ -58,9 +54,10 @@ export default function DaysGridView(props) {
   // day of the week to show day 1
   const firstWeekDay = (firstDayOfMonth.isoWeekday() + 1) % 7;
   // fill up an array of days with the amount of days in the current month
-  const days = Array.apply(null, { length: totalDays }).map(
+  //@ts-ignore
+  const days = Array.apply<number>(null, { length: totalDays }).map(
     Number.call,
-    Number,
+    Number
   );
   const guideArray = [0, 1, 2, 3, 4, 5, 6];
 
@@ -68,7 +65,7 @@ export default function DaysGridView(props) {
   const startIndex = firstWeekDay;
 
   function generateColumns(i) {
-    const column = guideArray.map(index => {
+    const column = guideArray.map((index) => {
       if (i === 0) {
         // for first row, let's start showing the days on the correct weekday
         if (index >= startIndex) {
@@ -139,8 +136,10 @@ export default function DaysGridView(props) {
     return column;
   }
   return (
+    //@ts-ignore
     <View style={styles.daysWrapper}>
-      {guideArray.map(index => (
+      {guideArray.map((index) => (
+        //@ts-ignore
         <View key={index} style={styles.weekRow}>
           {generateColumns(index)}
         </View>
@@ -148,32 +147,3 @@ export default function DaysGridView(props) {
     </View>
   );
 }
-
-DaysGridView.propTypes = {
-  styles: PropTypes.shape(),
-  month: PropTypes.number.isRequired,
-  year: PropTypes.number.isRequired,
-  onPressDay: PropTypes.func,
-  selectedDayStyle: viewPropTypes.style,
-  selectedRangeStartStyle: viewPropTypes.style,
-  selectedRangeStyle: viewPropTypes.style,
-  selectedRangeEndStyle: viewPropTypes.style,
-  todayTextStyle: Text.propTypes.style,
-  customDatesStyles: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.instanceOf(Date),
-        PropTypes.instanceOf(jMoment),
-      ]),
-      containerStyle: viewPropTypes.style,
-      style: viewPropTypes.style,
-      textStyle: Text.propTypes.style,
-    }),
-  ),
-  disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
-  minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
-  maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
-};
-
-module.exports = DaysGridView;

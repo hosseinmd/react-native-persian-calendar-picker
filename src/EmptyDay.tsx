@@ -5,11 +5,9 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
-'use strict';
-
-const React = require('react');
-const PropTypes = require('prop-types');
-const { View } = require('react-native');
+import React from "react";
+import PropTypes from "prop-types";
+import { View } from "react-native";
 
 function EmptyDay(props) {
   const { styles } = props;
@@ -24,4 +22,4 @@ EmptyDay.propTypes = {
   styles: PropTypes.shape({}),
 };
 
-module.exports = EmptyDay;
+export default EmptyDay;

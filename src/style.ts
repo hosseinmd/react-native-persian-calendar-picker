@@ -4,17 +4,14 @@
  * Copyright 2016 Reza (github.com/rghorbani)
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  *
- * @flow
  */
 
-'use strict';
-
-const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
-const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
-const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
+const DEFAULT_SELECTED_BACKGROUND_COLOR = "#5ce600";
+const DEFAULT_SELECTED_TEXT_COLOR = "#000000";
+const DEFAULT_TODAY_BACKGROUND_COLOR = "#CCCCCC";
 
 function getBorderRadiusByShape(scaler, dayShape) {
-  if (dayShape === 'square') {
+  if (dayShape === "square") {
     return 0;
   } else {
     return 30 * scaler;
@@ -49,14 +46,14 @@ function makeStyles({
       width: 30 * scaler,
       height: 30 * scaler,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     dayLabel: {
       fontSize: 14 * scaler,
-      color: '#000',
-      alignSelf: 'center',
+      color: "#000",
+      alignSelf: "center",
     },
 
     selectedDayLabel: {
@@ -64,35 +61,35 @@ function makeStyles({
     },
 
     dayLabelsWrapper: {
-      flexDirection: isRTL ? 'row-reverse' : 'row',
+      flexDirection: isRTL ? "row-reverse" : "row",
       borderBottomWidth: 1,
       borderTopWidth: 1,
       paddingTop: 10 * scaler,
       paddingBottom: 10 * scaler,
-      alignSelf: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.0)',
-      borderColor: 'rgba(0, 0, 0, 0.2)',
+      alignSelf: "center",
+      justifyContent: "center",
+      backgroundColor: "rgba(0, 0, 0, 0.0)",
+      borderColor: "rgba(0, 0, 0, 0.2)",
     },
 
     daysWrapper: {
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     dayLabels: {
       width: 50 * scaler,
       fontSize: 12 * scaler,
-      color: '#000',
-      textAlign: 'center',
+      color: "#000",
+      textAlign: "center",
     },
 
     selectedDay: {
       width: 30 * scaler,
       height: 30 * scaler,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     selectedDayBackground: {
@@ -104,16 +101,16 @@ function makeStyles({
       height: 30 * scaler,
       backgroundColor: TODAY_BG_COLOR,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     dayWrapper: {
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       width: 50 * scaler,
       height: 40 * scaler,
-      backgroundColor: 'rgba(0, 0, 0, 0.0)',
+      backgroundColor: "rgba(0, 0, 0, 0.0)",
     },
 
     startDayWrapper: {
@@ -124,8 +121,8 @@ function makeStyles({
       borderTopRightRadius: isRTL ? 20 * scaler : 0,
       borderBottomRightRadius: isRTL ? 20 * scaler : 0,
       backgroundColor: SELECTED_BG_COLOR,
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     endDayWrapper: {
@@ -136,33 +133,33 @@ function makeStyles({
       borderTopLeftRadius: isRTL ? 20 * scaler : 0,
       borderBottomLeftRadius: isRTL ? 20 * scaler : 0,
       backgroundColor: SELECTED_BG_COLOR,
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     inRangeDay: {
       width: 50 * scaler,
       height: 30 * scaler,
       backgroundColor: SELECTED_BG_COLOR,
-      alignSelf: 'center',
-      justifyContent: 'center',
+      alignSelf: "center",
+      justifyContent: "center",
     },
 
     monthLabel: {
       fontSize: 16 * scaler,
-      color: '#000',
+      color: "#000",
       marginBottom: 10 * scaler,
       width: 180 * scaler,
-      textAlign: 'center',
+      textAlign: "center",
     },
 
     headerWrapper: {
-      alignItems: 'center',
-      flexDirection: isRTL ? 'row-reverse' : 'row',
-      alignSelf: 'center',
+      alignItems: "center",
+      flexDirection: isRTL ? "row-reverse" : "row",
+      alignSelf: "center",
       padding: 5 * scaler,
       paddingBottom: 3 * scaler,
-      backgroundColor: 'rgba(0, 0, 0, 0.0)',
+      backgroundColor: "rgba(0, 0, 0, 0.0)",
     },
 
     monthSelector: {
@@ -172,35 +169,35 @@ function makeStyles({
     },
 
     prev: {
-      textAlign: isRTL ? 'right' : 'left',
+      textAlign: isRTL ? "right" : "left",
     },
 
     next: {
-      textAlign: isRTL ? 'left' : 'right',
+      textAlign: isRTL ? "left" : "right",
     },
 
     yearLabel: {
       fontSize: 14 * scaler,
-      fontWeight: 'bold',
-      color: '#000',
-      textAlign: 'center',
+      fontWeight: "bold",
+      color: "#000",
+      textAlign: "center",
     },
 
     weeks: {
-      flexDirection: 'column',
+      flexDirection: "column",
     },
 
     weekRow: {
-      flexDirection: isRTL ? 'row-reverse' : 'row',
+      flexDirection: isRTL ? "row-reverse" : "row",
     },
 
     disabledText: {
       fontSize: 14 * scaler,
-      color: '#BBBBBB',
-      alignSelf: 'center',
-      justifyContent: 'center',
+      color: "#BBBBBB",
+      alignSelf: "center",
+      justifyContent: "center",
     },
   };
 }
 
-module.exports = makeStyles;
+export default makeStyles;

@@ -5,16 +5,14 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
-'use strict';
-
-const React = require('react');
-const { PanResponder, View } = require('react-native');
+import React from "react";
+import { PanResponder, View } from "react-native";
 
 export const swipeDirections = {
-  SWIPE_UP: 'SWIPE_UP',
-  SWIPE_DOWN: 'SWIPE_DOWN',
-  SWIPE_LEFT: 'SWIPE_LEFT',
-  SWIPE_RIGHT: 'SWIPE_RIGHT',
+  SWIPE_UP: "SWIPE_UP",
+  SWIPE_DOWN: "SWIPE_DOWN",
+  SWIPE_LEFT: "SWIPE_LEFT",
+  SWIPE_RIGHT: "SWIPE_RIGHT",
 };
 
 const swipeConfig = {
@@ -26,7 +24,7 @@ function isValidSwipe(
   velocity,
   velocityThreshold,
   directionalOffset,
-  directionalOffsetThreshold,
+  directionalOffsetThreshold
 ) {
   return (
     Math.abs(velocity) > velocityThreshold &&
@@ -34,7 +32,9 @@ function isValidSwipe(
   );
 }
 
-class Swiper extends React.Component {
+class Swiper extends React.Component<any> {
+  private _panResponder: any;
+  swipeConfig: any;
   constructor(props, context) {
     super(props, context);
     this.swipeConfig = Object.assign(swipeConfig, props.config);
@@ -126,4 +126,4 @@ class Swiper extends React.Component {
   }
 }
 
-module.exports = Swiper;
+export default Swiper;
